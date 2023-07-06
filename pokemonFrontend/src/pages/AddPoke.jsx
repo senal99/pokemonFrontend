@@ -3,6 +3,7 @@ import TopBar from "../components/TopBar";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AlertBox from "../components/AlertBox";
+import "@fontsource/quicksand";
 
 import axios from "axios";
 
@@ -64,7 +65,6 @@ const AddPoke = () => {
     }
 
     const clearForm = () => {
-
         setName("")
         setDescription("")
         setHealth("")
@@ -78,16 +78,17 @@ const AddPoke = () => {
 
 
     return (
-        <>
+        < >
             <TopBar />
             <Box
                 sx={{
-                    height: '100vh',
-                    paddingTop: '50px'
+                    paddingTop: '50px',
+                    paddingBottom: '50px'
                 }}
-                bgcolor={'#ffe7a3'}
+
                 display='flex'
                 justifyContent='center'
+                fontFamily='Quicksand'
             >
                 <Stack direction="row">
                     <Box
@@ -95,10 +96,10 @@ const AddPoke = () => {
                         padding={4}
                         borderRadius={8}
                     >
-                        <Typography variant="h5" component='div'>
-                            Add Details Here
+                        <Typography variant="h5"  paddingBottom={2}>
+                            Add pokemon details
                         </Typography>
-                        <Stack gap={4} width={350} paddingBottom={2}>
+                        <Stack gap={4} width={360} paddingBottom={'10px'}>
                             <TextField
                                 label="Name"
                                 variant="outlined"
