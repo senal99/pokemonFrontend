@@ -42,7 +42,7 @@ const DetailsPage = () => {
                         padding: "30px",
                     }}
                     >
-                        <Typography variant="h5" component='div' paddingLeft={3} paddingTop={3} >
+                        <Typography variant="h5" component='div' paddingLeft={3} paddingTop={1} >
                             Semora
                         </Typography>
                         <Stack direction={{
