@@ -6,13 +6,10 @@ import { setAllPokemon } from '../redux/pokemon';
 
 const useGetData = (url) => {
     const dispatch = useDispatch();
-
     const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const { searchKey, isLoading, pokemonArray, error } = useSelector((state) => state.pokemon)
 
     const allData = async () => {
-        setError(false)
         const res = await axios.get(url)
             .catch(function (error) {
                 if (error.response) {
@@ -40,7 +37,7 @@ const useGetData = (url) => {
     useEffect(() => {
         allData();
     }, [url])
-    return { data, isLoading, error }
+    return { data, isLoading, error, searchKey, pokemonArray }
 }
 
 export default useGetData;

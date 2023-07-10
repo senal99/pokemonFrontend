@@ -4,13 +4,22 @@ import useGetData from "../hooks/useGetData";
 import { useSelector } from "react-redux";
 import BannerBox from "../components/Banner";
 import Message from "../components/MessageBox";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Stack ,Typography } from "@mui/material";
 
 const HomePage = () => {
     const [url, setUrl] = useState('http://localhost:3000/pokemon/getAll/0')
     const [page, setPage] = useState(0)
-    useGetData(url);
-    const { searchKey, isLoading, pokemonArray, error } = useSelector((state) => state.pokemon)
+    const { searchKey, isLoading, pokemonArray, error } = useGetData(url);
+
+    const frontPage = () =>{
+        setPage(page + 1)
+        console.log("page back")
+    }
+    const backPage = () =>{
+        if(page > 0){
+            setPage(page - 1)
+        }
+    }
 
     useEffect(() => {
         if (searchKey == 'all') {
@@ -19,8 +28,7 @@ const HomePage = () => {
             setUrl(`http://localhost:3000/pokemon/` + searchKey)
         }
     }, [page, searchKey])
-    console.log("home")
-    // console.log(pokemonArray.length)
+
 
     return (
         <div className="homepage">
@@ -44,7 +52,7 @@ const HomePage = () => {
                             justifyContent='center'
                             paddingTop={4}
                         >
-                            {1 < pokemonArray.length ?
+                            {0 < pokemonArray.length ?
                                 <Typography variant="h6">
                                     Showing Results for {searchKey}
                                 </Typography>
@@ -56,14 +64,27 @@ const HomePage = () => {
                         </Box>
                     </>
                 }
+
                 {pokemonArray && <Cardbox data={pokemonArray} />}
                 <Box
                     display='flex'
                     alignItems='center'
                     justifyContent='center'
-                    paddingTop={4}
-                    paddingBottom={8}
+                    paddingTop={2}
                 >
+                </Box>
+                <Box
+                    display='flex'
+                    alignItems='center'
+                    justifyContent='center'
+                    paddingBottom={4}
+
+                >
+                    <Stack direction={"row"} gap={10}>
+                    {page > 0 && <Button variant="contained" onClick={backPage}>Previous Page</Button>}
+                    {1 < pokemonArray.length && <Button variant="contained" onClick={frontPage}>Next Page</Button>}
+                    </Stack>
+                    
                 </Box>
             </Box>
         </div>
