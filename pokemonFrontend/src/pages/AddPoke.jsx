@@ -44,11 +44,11 @@ const AddPoke = () => {
 
     const postTheData = async () => {
         const res = await axios.post('http://localhost:3000/pokemon/', {
-            name: data.name,
-            description: data.description,
-            attack: data.attack,
-            health: data.health,
-            defense: data.defense
+            name: name,
+            description: description,
+            attack: attack,
+            health: health,
+            defense: defense
         })
             .then(function (res) {
                 if (res.status == '201') {
