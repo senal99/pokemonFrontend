@@ -10,7 +10,6 @@ const useGetData = (url) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const { searchKey } = useSelector((state) => state.pokemon)
 
     const allData = async () => {
         setError(false)
@@ -34,35 +33,11 @@ const useGetData = (url) => {
                 }
                 console.log(error.config);
             });
-
-        // if (res) {
-            // dispatch(setBackUrlink(res.data.previous));
-            // dispatch(setFrontUrlink(res.data.next));
-        // }
-        if (searchKey == 'all') {
-            firstFilterData(res.data.results)
-            console.log("search key " + searchKey)
-        } else {
-            dispatch(setAllPokemon(res.data));
-            console.log("search key " + searchKey)
-        }
-    }
-
-    const firstFilterData = async (items) => {
-        items.map(async (item) => {
-            const results = await axios.get(item.url)
-            if (results.status != 200) {
-                setError("Something went wrong!")
-            }
-
-            dispatch(setAllPokemon(results.data));
-            setIsLoading(false)
-            // use normal variable to get all data then assign to dispatch
-        })
+        dispatch(setAllPokemon(res.data));
+        console.log(res.data)
     }
 
     useEffect(() => {
-        // dispatch(resetAllPokemon());
         allData();
     }, [url])
     return { data, isLoading, error }

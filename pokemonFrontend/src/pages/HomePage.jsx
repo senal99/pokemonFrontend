@@ -7,19 +7,20 @@ import Message from "../components/MessageBox";
 import { Box, Typography } from "@mui/material";
 
 const HomePage = () => {
-    const originalUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0';
-    const [url, setUrl] = useState(originalUrl)
-    const { searchKey, isLoading, pokemonArray, error} = useSelector((state) => state.pokemon)
+    const [url, setUrl] = useState('http://localhost:3000/pokemon/getAll/0')
+    const [page, setPage] = useState(0)
+    useGetData(url);
+    const { searchKey, isLoading, pokemonArray, error } = useSelector((state) => state.pokemon)
 
     useEffect(() => {
         if (searchKey == 'all') {
-            setUrl(originalUrl)
+            setUrl(`http://localhost:3000/pokemon/getAll/` + page)
         } else {
-            setUrl(`https://pokeapi.co/api/v2/pokemon/` + searchKey)
-            console.log(url)
+            setUrl(`http://localhost:3000/pokemon/` + searchKey)
         }
-    }, [])
+    }, [page, searchKey])
     console.log("home")
+    // console.log(pokemonArray.length)
 
     return (
         <div className="homepage">
@@ -43,9 +44,15 @@ const HomePage = () => {
                             justifyContent='center'
                             paddingTop={4}
                         >
-                            <Typography variant="h6">
-                                Showing Results for {searchKey}
-                            </Typography>
+                            {1 < pokemonArray.length ?
+                                <Typography variant="h6">
+                                    Showing Results for {searchKey}
+                                </Typography>
+                                :
+                                <Typography variant="h6">
+                                    No Results. Try diferent keyword
+                                </Typography>
+                            }
                         </Box>
                     </>
                 }

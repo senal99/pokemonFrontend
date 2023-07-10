@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const pokemonSlice = createSlice({
     name: "pokemon",
     initialState: {
-        pokemonArray: [1,2,3],
+        pokemonArray: null,
         detailPokemon: null,
         postData: null,
         isLoading: false,
         error: null,
-        searchKey: "all"
+        searchKey: "all",
     },
     reducers:{
         setAllPokemon:(state, action)=>{
-            state.pokemonArray.push(action.payload)
+            state.pokemonArray = (action.payload)
         },
         setDetailPokemon: (state, action) => {
             state.detailPokemon = action.payload

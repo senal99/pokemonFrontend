@@ -12,6 +12,7 @@ const Cardbox = () => {
     }
 
     const { pokemonArray} = useSelector((state) => state.pokemon)
+    // console.log(pokemonArray[0])
     return (
         <>
             <Box
