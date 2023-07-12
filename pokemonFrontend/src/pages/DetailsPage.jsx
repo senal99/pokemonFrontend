@@ -1,15 +1,15 @@
-import { Box, Grid, Stack, Typography, ButtonBase } from "@mui/material";
+import { Box, Grid, Stack, Typography, ButtonBase, Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import "@fontsource/quicksand";
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../components/TopBar";
+import DeleteModal from "../modals/DeleteModal";
 
 const DetailsPage = () => {
     const navigate = useNavigate();
     const { detailPokemon } = useSelector((state) => state.pokemon)
-    console.log(detailPokemon)
     useEffect(() => {
         if (!detailPokemon) {
 
@@ -17,6 +17,16 @@ const DetailsPage = () => {
             navigate('/');
         }
     }, [detailPokemon])
+
+    const [deleteBox, setDeleteBox] = useState(false)
+
+    const editPage=()=>{
+        navigate('/edit')
+    }
+
+    const deletePage =()=>{
+        setDeleteBox(true)
+    }
 
     return (
         <div className="detailspage" style={{ fontFamily: 'Quicksand' }}>
@@ -29,21 +39,24 @@ const DetailsPage = () => {
             >
                 {detailPokemon &&
                     <Box sx={{
-                        background: '#ffffff',
+                        background: '#F5F5F5',
                         width: {
                             xs: '300px',
-                            sm: '500px',
+                            sm: '400px',
                             md: '700px',
-                            lg: '900px',
-                            xl: '1000px'
+                            lg: '700px',
+                            xl: '900px'
                         },
-                        borderRadius: '20px',
-                        marginTop: '20px',
-                        padding: "30px",
+                        border: 1,
+                        borderWidth: '3px',
+                        borderRadius: '35px',
+                        padding: "40px",
+                        marginBottom: '40px',
+                        marginTop: '60px'
                     }}
                     >
-                        <Typography variant="h5" component='div' paddingLeft={3} paddingTop={1} >
-                            Semora
+                        <Typography variant="h5" sx={{ fontWeight: "bold" }} component='div' paddingLeft={3} paddingTop={1} >
+                            {detailPokemon.name}
                         </Typography>
                         <Stack direction={{
                             md: "row"
@@ -54,15 +67,17 @@ const DetailsPage = () => {
                                 margin: '10px'
                             }}
                             gap={2}>
-                            <Box bgcolor={'#ffebc4'} sx={{
-                                borderRadius: '20px',
-                                padding: '20px',
-                                width: {
-                                    md: "50%"
-                                }
-                            }}>
+                            <Box bgcolor={'#FFD28F'}
+                                sx={{
+                                    borderRadius: '30px',
+                                    padding: '30px',
+                                    width: {
+                                        md: "50%"
+                                    },
+                                    border: 1,
+                                }}>
                                 <Typography variant="p" component='div' textAlign={'justify'} >
-                                    FREE Twenty years after a fungal outbreak ravages the planet, survivors Joel and Tess are tasked with a mission that could change everything. Ends 03/30. Don't have Max? Go to Channel 2495 and upgrade instantly.with a mission that could change everything. Ends 03/30. Don't have Max? Go to Channel 2495 and upgrade instantly.
+                                    {detailPokemon.description}
                                 </Typography>
                             </Box>
                             <Box sx={{
@@ -71,11 +86,14 @@ const DetailsPage = () => {
                                 }
                             }}>
                                 <Stack direction={"column"} gap={2}>
-                                    <Stack bgcolor={'#b8ffce'}
-                                        borderRadius={5}
+                                    <Stack bgcolor={'#9DE8AE'}
+                                        borderRadius={6}
                                         padding={'20px'}
                                         paddingLeft={'50px'}
                                         paddingRight={'50px'}
+                                        sx={{
+                                            border: 1,
+                                        }}
                                     >
                                         <Stack
                                             direction="row"
@@ -84,15 +102,18 @@ const DetailsPage = () => {
                                             spacing={2}
                                         >
                                             <Stack>HEALTH</Stack>
-                                            <Stack fontWeight={'bold'}>68</Stack>
+                                            <Stack fontWeight={'bold'}> {detailPokemon.health}</Stack>
                                         </Stack>
                                     </Stack>
                                     <Stack
-                                        bgcolor={'#b5d8ff'}
-                                        borderRadius={5}
+                                        bgcolor={'#FFB8C9'}
+                                        borderRadius={6}
                                         padding={'20px'}
                                         paddingLeft={'50px'}
                                         paddingRight={'50px'}
+                                        sx={{
+                                            border: 1,
+                                        }}
                                     >
                                         <Stack
                                             direction="row"
@@ -101,15 +122,18 @@ const DetailsPage = () => {
                                             spacing={2}
                                         >
                                             <Stack>ATTACK</Stack>
-                                            <Stack fontWeight={'bold'}>68</Stack>
+                                            <Stack fontWeight={'bold'}> {detailPokemon.attack}</Stack>
                                         </Stack>
                                     </Stack>
                                     <Stack
-                                        bgcolor={'#ffc7d8'}
-                                        borderRadius={5}
+                                        bgcolor={'#A1CEEE'}
+                                        borderRadius={6}
                                         padding={'20px'}
                                         paddingLeft={'50px'}
                                         paddingRight={'50px'}
+                                        sx={{
+                                            border: 1,
+                                        }}
                                     >
                                         <Stack
                                             direction="row"
@@ -118,15 +142,25 @@ const DetailsPage = () => {
                                             spacing={2}
                                         >
                                             <Stack>DEFENSE</Stack>
-                                            <Stack fontWeight={'bold'}>68</Stack>
+                                            <Stack fontWeight={'bold'}> {detailPokemon.defense} </Stack>
                                         </Stack>
                                     </Stack>
                                 </Stack>
                             </Box>
+
                         </Stack>
+                        <Box
+                            width="100%"
+                            display='flex'
+                            justifyContent='right'
+                            >
+                            <Button onClick={editPage} variant="contained" sx={{marginRight:'17px', borderRadius:'14px', bgcolor:'orange'}}>Edit</Button>
+                            <Button onClick={deletePage} variant="contained" sx={{marginRight:'17px', borderRadius:'14px', bgcolor:'orange'}}>Delete</Button>
+                        </Box>
                     </Box>
                 }
             </Box>
+            {deleteBox && <DeleteModal />}
         </div>
     );
 }

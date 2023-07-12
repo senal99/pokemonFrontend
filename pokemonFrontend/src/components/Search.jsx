@@ -27,8 +27,9 @@ const SearchBar = () => {
     return ( 
         <div className="search">
             <Stack spacing={2} direction='row' >
-                <TextField id="outlined-basic" label="Search" variant="outlined" onChange={(e) => {setSearch(e.target.value)}} sx={{
-                    width: '100%'
+                <TextField id="outlined-basic"  label="Search" variant="outlined" onChange={(e) => {setSearch(e.target.value)}} sx={{
+                    width: '100%',                    
+                    bgcolor : "white",
                 }}/>
                 <Button variant="contained" startIcon={<SearchIcon/>} onClick={handleSearch} sx={{
                     backgroundColor:"#e8d500",
