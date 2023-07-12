@@ -15,7 +15,6 @@ const SearchBar = () => {
         if (pattern.test(search) || search == null || search == "") {
             if (search == "" || search == null) {
                 dispatch(setSearchKey("all"));
-                console.log("blacnk")
             } else {
                 dispatch(setSearchKey(search));
             }

@@ -29,7 +29,6 @@ export default function DeleteModal() {
     const [showButton, setShowButton] = useState(true)
 
     const handleCancel = () => {
-        console.log("button clicked")
         navigate('/')
     }
 
@@ -40,9 +39,6 @@ export default function DeleteModal() {
                     setMessage({ message: 'Pokemon Deleted!', type: 'success' });
                     setShowButton(false)
                 }
-                console.log(res);
-                console.log(data)
-
             })
             .catch(function (error) {
                 console.log(error);

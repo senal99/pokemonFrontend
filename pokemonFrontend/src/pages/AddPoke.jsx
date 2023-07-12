@@ -51,8 +51,6 @@ const AddPoke = () => {
                     setMessage({ message: 'Pokemon Added!', type: 'success' });
                     clearForm();
                 }
-                console.log(res);
-                console.log(data)
                 clearForm();
             })
             .catch(function (error) {

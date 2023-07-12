@@ -12,8 +12,6 @@ const DetailsPage = () => {
     const { detailPokemon } = useSelector((state) => state.pokemon)
     useEffect(() => {
         if (!detailPokemon) {
-
-            console.log("test")
             navigate('/');
         }
     }, [detailPokemon])
