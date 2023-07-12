@@ -52,7 +52,7 @@ const BannerBox = () => {
                                         color: "black",
                                         width: "150px"
                                     }}
-                                    onClick={addPoke}
+                                        onClick={addPoke}
                                     >Add Pokemon</Button>
                                 </Stack>
                             </Stack>

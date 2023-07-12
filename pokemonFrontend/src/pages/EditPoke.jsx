@@ -6,10 +6,7 @@ import AlertBox from "../components/AlertBox";
 import { useSelector } from "react-redux";
 import "@fontsource/quicksand";
 import MessageModal from "../modals/MessageModal";
-import DeleteModal from "../modals/DeleteModal";
-
 import axios from "axios";
-
 
 const EditPoke = () => {
     const { detailPokemon } = useSelector((state) => state.pokemon)
@@ -19,14 +16,9 @@ const EditPoke = () => {
     const [health, setHealth] = useState("")
     const [attack, setAttack] = useState("")
     const [defense, setDefense] = useState("")
-
     const [data, setData] = useState(null);
     const [message, setMessage] = useState(false);
     const [pop, setPop] = useState(false);
-    
-
-
-
 
     const handleClick = () => {
         setMessage(false)
@@ -58,18 +50,18 @@ const EditPoke = () => {
             health: health,
             defense: defense
         })
-        .then(function (res) {
-            if (res.status == '200') {
-                setPop({ message: 'Pokemon Updated!', type: 'success' });
+            .then(function (res) {
+                if (res.status == '200') {
+                    setPop({ message: 'Pokemon Updated!', type: 'success' });
+                    clearForm();
+                }
+                console.log(res);
+                console.log(data)
                 clearForm();
-            }
-            console.log(res);
-            console.log(data)
-            clearForm();
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     const clearForm = () => {
@@ -91,11 +83,10 @@ const EditPoke = () => {
             setHealth(detailPokemon.health)
             setAttack(detailPokemon.attack)
             setDefense(detailPokemon.defense)
-        }else{
+        } else {
             navigate('/')
         }
     }, [detailPokemon])
-
 
     return (
         < >
@@ -166,17 +157,10 @@ const EditPoke = () => {
                     </Box>
                 </Stack>
             </Box>
-            {pop && <MessageModal message={pop}/>}
+            {pop && <MessageModal message={pop} />}
         </>
     );
 }
 
 export default EditPoke;
-
-
-// authenticate endpoints / pass JWT token / 
-// need access for AWS sandbox thing cognitor user pool?
-
-// login page. token should generate. use amplify
-// applify is used to access cognito users
 

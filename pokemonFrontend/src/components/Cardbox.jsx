@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setDetailPokemon } from '../redux/pokemon';
@@ -12,7 +12,7 @@ const Cardbox = () => {
         navigate(`/details`)
     }
 
-    const { pokemonArray} = useSelector((state) => state.pokemon)
+    const { pokemonArray } = useSelector((state) => state.pokemon)
 
     return (
         <>
@@ -35,8 +35,8 @@ const Cardbox = () => {
                             transition: 'background-color 0.2s',
                             transition: 'transform 0.2s',
                             borderRadius: '30px',
-                            border : 1,
-                            borderWidth : '2px',
+                            border: 1,
+                            borderWidth: '2px',
                             '&:hover': {
                                 backgroundColor: "#1F1F1F",
                                 color: "white",
@@ -46,7 +46,7 @@ const Cardbox = () => {
                         onClick={() => handleClick(dataOne)}
                     >
                         <Box sx={{
-                            direction : 'column'
+                            direction: 'column'
                         }}>
                             <Box
                                 width="100%"
@@ -57,12 +57,12 @@ const Cardbox = () => {
                                     {dataOne.name}
                                 </Typography>
                             </Box>
-                            <Box 
+                            <Box
                                 width="100%"
                                 display='flex'
                                 alignItems='center'
                                 justifyContent='center'>
-                                 <img src={image} width={100} alt="logo" />
+                                <img src={image} width={100} alt="logo" />
                             </Box>
                         </Box>
                     </Box>

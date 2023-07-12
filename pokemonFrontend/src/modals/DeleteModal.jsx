@@ -1,15 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { Typography, Stack } from '@mui/material/';
+import { Stack } from '@mui/material/';
 import Modal from '@mui/material/Modal';
 import AlertBox from '../components/AlertBox';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import MessageModal from './MessageModal';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { useState } from 'react';
-
 
 const style = {
     position: 'absolute',
@@ -23,18 +21,12 @@ const style = {
     p: 4,
 };
 
-
-// add this button
-
 export default function DeleteModal() {
     const { detailPokemon } = useSelector((state) => state.pokemon)
     const navigate = useNavigate();
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [message, setMessage] = useState({ message: 'Pokemon Updated!', type: 'delete' });
     const [showButton, setShowButton] = useState(true)
-
 
     const handleCancel = () => {
         console.log("button clicked")
@@ -50,7 +42,7 @@ export default function DeleteModal() {
                 }
                 console.log(res);
                 console.log(data)
-              
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -78,7 +70,7 @@ export default function DeleteModal() {
                                 onClick={handleCancel}
                                 sx={{ borderColor: 'orange', color: 'orange', marginTop: '10px' }}>Go Home
                             </Button>
-                            { showButton &&
+                            {showButton &&
                                 <Button
                                     variant='contained'
                                     onClick={deleteTheData}
