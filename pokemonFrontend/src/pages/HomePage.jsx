@@ -13,7 +13,6 @@ const HomePage = () => {
 
     const frontPage = () => {
         setPage(page + 1)
-        console.log("page back")
     }
     const backPage = () => {
         if (page > 0) {

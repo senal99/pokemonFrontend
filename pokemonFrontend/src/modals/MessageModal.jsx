@@ -21,7 +21,6 @@ export default function MessageModal({ message }) {
     const navigate = useNavigate();
     const handleClose = () => setOpen(false);
     const buttonClick =() =>{
-        console.log("button clicked")
         navigate('/')
     }
     

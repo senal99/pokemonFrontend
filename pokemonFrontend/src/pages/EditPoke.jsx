@@ -55,8 +55,6 @@ const EditPoke = () => {
                     setPop({ message: 'Pokemon Updated!', type: 'success' });
                     clearForm();
                 }
-                console.log(res);
-                console.log(data)
                 clearForm();
             })
             .catch(function (error) {
