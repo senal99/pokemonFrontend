@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography, ButtonBase, Button } from "@mui/material";
+import { Box, Grid, Stack, Typography, Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import "@fontsource/quicksand";
 
@@ -20,11 +20,11 @@ const DetailsPage = () => {
 
     const [deleteBox, setDeleteBox] = useState(false)
 
-    const editPage=()=>{
+    const editPage = () => {
         navigate('/edit')
     }
 
-    const deletePage =()=>{
+    const deletePage = () => {
         setDeleteBox(true)
     }
 
@@ -153,9 +153,9 @@ const DetailsPage = () => {
                             width="100%"
                             display='flex'
                             justifyContent='right'
-                            >
-                            <Button onClick={editPage} variant="contained" sx={{marginRight:'17px', borderRadius:'14px', bgcolor:'orange'}}>Edit</Button>
-                            <Button onClick={deletePage} variant="contained" sx={{marginRight:'17px', borderRadius:'14px', bgcolor:'orange'}}>Delete</Button>
+                        >
+                            <Button onClick={editPage} variant="contained" sx={{ marginRight: '17px', borderRadius: '14px', bgcolor: 'orange' }}>Edit</Button>
+                            <Button onClick={deletePage} variant="contained" sx={{ marginRight: '17px', borderRadius: '14px', bgcolor: 'orange' }}>Delete</Button>
                         </Box>
                     </Box>
                 }

@@ -1,11 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import AlertBox from '../components/AlertBox';
 import { useNavigate } from 'react-router-dom';
-
 
 const style = {
     position: 'absolute',
@@ -19,23 +17,16 @@ const style = {
     p: 4,
 };
 
-
-// add this button
-
 export default function MessageModal({ message }) {
     const navigate = useNavigate();
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const buttonClick =() =>{
         console.log("button clicked")
         navigate('/')
     }
-
     
     return (
         <div>
-            {/* <Button onClick={handleOpen}>Open modal</Button> */}
             <Modal
                 open={true}
                 onClose={handleClose}

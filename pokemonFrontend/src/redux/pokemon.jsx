@@ -10,8 +10,8 @@ export const pokemonSlice = createSlice({
         error: null,
         searchKey: "all",
     },
-    reducers:{
-        setAllPokemon:(state, action)=>{
+    reducers: {
+        setAllPokemon: (state, action) => {
             state.pokemonArray = (action.payload)
         },
         setDetailPokemon: (state, action) => {
@@ -32,5 +32,5 @@ export const pokemonSlice = createSlice({
     }
 })
 
-export const { setAllPokemon , setDetailPokemon, setSearchKey, setIsLoading, setPostData } = pokemonSlice.actions;
+export const { setAllPokemon, setDetailPokemon, setSearchKey, setIsLoading, setPostData } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

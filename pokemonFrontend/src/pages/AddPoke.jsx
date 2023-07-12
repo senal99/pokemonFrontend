@@ -1,12 +1,10 @@
-import { Box, Typography, Button, Stack, Alert, AlertTitle, TextField } from "@mui/material";
+import { Box, Typography, Button, Stack, TextField } from "@mui/material";
 import TopBar from "../components/TopBar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AlertBox from "../components/AlertBox";
 import "@fontsource/quicksand";
-
 import axios from "axios";
-
 
 const AddPoke = () => {
     const [name, setName] = useState("")
@@ -14,10 +12,8 @@ const AddPoke = () => {
     const [health, setHealth] = useState("")
     const [attack, setAttack] = useState("")
     const [defense, setDefense] = useState("")
-
     const [data, setData] = useState(null);
     const [message, setMessage] = useState(false);
-
     const navigate = new useNavigate();
 
     const handleClick = () => {
@@ -76,7 +72,6 @@ const AddPoke = () => {
         navigate('/');
     }
 
-
     return (
         < >
             <TopBar />
@@ -96,7 +91,7 @@ const AddPoke = () => {
                         padding={4}
                         borderRadius={8}
                     >
-                        <Typography variant="h5"  paddingBottom={2}>
+                        <Typography variant="h5" paddingBottom={2}>
                             Add pokemon details
                         </Typography>
                         <Stack gap={4} width={360} paddingBottom={'10px'}>

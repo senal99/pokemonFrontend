@@ -1,5 +1,4 @@
-import SearchBar from "./Search";
-import { Box, Button, Divider, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import image from '../assets/pl.png'
 import { useNavigate } from "react-router-dom";
 
