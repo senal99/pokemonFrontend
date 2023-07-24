@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import AlertBox from "../components/AlertBox";
 import "@fontsource/quicksand";
 import axios from "axios";
+import useGetToken from "../hooks/useGetToken";
 
 const AddPoke = () => {
     const [name, setName] = useState("")
@@ -15,6 +16,7 @@ const AddPoke = () => {
     const [data, setData] = useState(null);
     const [message, setMessage] = useState(false);
     const navigate = new useNavigate();
+    const token = useGetToken();
 
     const handleClick = () => {
         setMessage(false)
@@ -45,6 +47,11 @@ const AddPoke = () => {
             attack: attack,
             health: health,
             defense: defense
+            
+        },{
+            headers: {
+                "Authorization" : `Bearer ${token.token} `
+            }
         })
             .then(function (res) {
                 if (res.status == '201') {
@@ -85,7 +92,7 @@ const AddPoke = () => {
             >
                 <Stack direction="row">
                     <Box
-                        bgcolor={'white'}
+                        bgcolor={'#3D3D3D'}
                         padding={4}
                         borderRadius={8}
                     >
@@ -96,6 +103,8 @@ const AddPoke = () => {
                             <TextField
                                 label="Name"
                                 variant="outlined"
+                                ariant="filled"
+                                sx={{bgcolor:"white"}}
                                 onChange={e => { setName(event.target.value) }}
                                 value={name}
                             />
@@ -103,12 +112,16 @@ const AddPoke = () => {
                                 label="Description"
                                 multiline
                                 rows={4}
+                                ariant="filled"
+                                sx={{bgcolor:"white"}}
                                 onChange={e => { setDescription(event.target.value) }}
                                 value={description}
                             />
                             <TextField
                                 label="Health"
                                 type="number"
+                                ariant="filled"
+                                sx={{bgcolor:"white"}}
                                 InputLabelProps={{ shrink: true, }}
                                 onChange={e => { setHealth(event.target.value) }}
                                 value={health}
@@ -116,6 +129,8 @@ const AddPoke = () => {
                             <TextField
                                 label="Attach"
                                 type="number"
+                                ariant="filled"
+                                sx={{bgcolor:"white"}}
                                 InputLabelProps={{ shrink: true, }}
                                 onChange={e => { setAttack(event.target.value) }}
                                 value={attack}
@@ -123,6 +138,8 @@ const AddPoke = () => {
                             <TextField
                                 label="Defense"
                                 type="number"
+                                ariant="filled"
+                                sx={{bgcolor:"white"}}
                                 InputLabelProps={{ shrink: true, }}
                                 onChange={e => { setDefense(event.target.value) }}
                                 value={defense}

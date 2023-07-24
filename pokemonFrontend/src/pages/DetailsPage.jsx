@@ -10,6 +10,7 @@ import DeleteModal from "../modals/DeleteModal";
 const DetailsPage = () => {
     const navigate = useNavigate();
     const { detailPokemon } = useSelector((state) => state.pokemon)
+
     useEffect(() => {
         if (!detailPokemon) {
             navigate('/');
@@ -37,7 +38,7 @@ const DetailsPage = () => {
             >
                 {detailPokemon &&
                     <Box sx={{
-                        background: '#F5F5F5',
+                        background: '#3D3D3D',
                         width: {
                             xs: '300px',
                             sm: '400px',
@@ -65,14 +66,13 @@ const DetailsPage = () => {
                                 margin: '10px'
                             }}
                             gap={2}>
-                            <Box bgcolor={'#FFD28F'}
+                            <Box bgcolor={'#212121'}
                                 sx={{
                                     borderRadius: '30px',
                                     padding: '30px',
                                     width: {
                                         md: "50%"
                                     },
-                                    border: 1,
                                 }}>
                                 <Typography variant="p" component='div' textAlign={'justify'} >
                                     {detailPokemon.description}
@@ -84,14 +84,11 @@ const DetailsPage = () => {
                                 }
                             }}>
                                 <Stack direction={"column"} gap={2}>
-                                    <Stack bgcolor={'#9DE8AE'}
+                                    <Stack bgcolor={'#212121'}
                                         borderRadius={6}
                                         padding={'20px'}
                                         paddingLeft={'50px'}
                                         paddingRight={'50px'}
-                                        sx={{
-                                            border: 1,
-                                        }}
                                     >
                                         <Stack
                                             direction="row"
@@ -104,14 +101,11 @@ const DetailsPage = () => {
                                         </Stack>
                                     </Stack>
                                     <Stack
-                                        bgcolor={'#FFB8C9'}
+                                        bgcolor={'#212121'}
                                         borderRadius={6}
                                         padding={'20px'}
                                         paddingLeft={'50px'}
                                         paddingRight={'50px'}
-                                        sx={{
-                                            border: 1,
-                                        }}
                                     >
                                         <Stack
                                             direction="row"
@@ -124,14 +118,11 @@ const DetailsPage = () => {
                                         </Stack>
                                     </Stack>
                                     <Stack
-                                        bgcolor={'#A1CEEE'}
+                                        bgcolor={'#212121'}
                                         borderRadius={6}
                                         padding={'20px'}
                                         paddingLeft={'50px'}
                                         paddingRight={'50px'}
-                                        sx={{
-                                            border: 1,
-                                        }}
                                     >
                                         <Stack
                                             direction="row"
@@ -158,7 +149,7 @@ const DetailsPage = () => {
                     </Box>
                 }
             </Box>
-            {deleteBox && <DeleteModal />}
+            {deleteBox && <DeleteModal turnOff={setDeleteBox} />}
         </div>
     );
 }

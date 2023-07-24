@@ -4,9 +4,24 @@ import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { setSearchKey } from '../redux/pokemon';
 
+
 const SearchBar = () => {
     const dispatch = useDispatch();
     const [search, setSearch] = useState(null);
+
+    const customStyles = {
+        height: 40,
+        width : 400,
+        outline: 'none',
+        borderStyle : 'none',
+        borderRadius : '15px',
+        backgroundColor : '#4D4D4D',
+        '& input':
+        {
+            padding: '5px 12px',
+            outline: 'none'
+        },
+    };
 
     const pattern = /^[A-Za-z]+$/;
 
@@ -25,15 +40,13 @@ const SearchBar = () => {
 
     return (
         <div className="search">
-            <Stack spacing={2} direction='row' >
-                <TextField id="outlined-basic" label="Search" variant="outlined" onChange={(e) => { setSearch(e.target.value) }} sx={{
-                    width: '100%',
-                    bgcolor: "white",
-                }} />
-                <Button variant="contained" startIcon={<SearchIcon />} onClick={handleSearch} sx={{
-                    backgroundColor: "#e8d500",
+            <Stack spacing={2}  >
+                <TextField onChange={(e) => { setSearch(e.target.value) }} style={customStyles} variant="outlined" size="small" />
+                <Button variant="contained"  onClick={handleSearch} sx={{
+                    backgroundColor: "#FFC123",
                     color: "black",
-                    width: "150px"
+                    width: "100px",
+                    borderRadius : '10px'
                 }}>Search</Button>
             </Stack>
         </div>
