@@ -1,8 +1,18 @@
 import { Box, Button, Stack } from "@mui/material";
 import image from '../assets/pl.png'
 import { useNavigate } from "react-router-dom";
+import { Auth } from 'aws-amplify';
 
 const TopBar = () => {
+    async function signOut() {
+        try {
+            await Auth.signOut();
+            navigate(0)
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+    }
+
     const navigate = useNavigate();
     const goHome = () => {
         navigate('/')
@@ -15,7 +25,7 @@ const TopBar = () => {
     return (
         <>
             <Box
-                height={75}
+                height={100}
                 display='flex'
                 alignItems='center'
                 justifyContent='center'
@@ -30,7 +40,7 @@ const TopBar = () => {
                             <Button
                                 onClick={goHome}
                                 sx={{
-                                    color: "#FFC123", fontWeight: "bold",
+                                    color: "#e3e3e3",
                                     '&:hover': {
                                         backgroundColor: "#525252",
                                         color: "white",
@@ -39,16 +49,33 @@ const TopBar = () => {
                                     }
                                 }} > Go Home</Button>
                             <Button
+                            variant="outlined"
                                 onClick={addPoke}
                                 sx={{
-                                    color: "#FFC123", fontWeight: "bold",
+                                    borderColor :'#FFC123',
+                                    color: "#e3e3e3",
                                     '&:hover': {
                                         backgroundColor: "#525252",
+                                        borderColor :'#FFC123',
                                         color: "white",
                                         transition: 'transform 0.2s',
                                         transform: 'scale(1.1)'
                                     }
                                 }}  >Add Poke</Button>
+                                <Button
+                    
+                                onClick={signOut}
+                                sx={{
+                                    borderColor :'#FFC123',
+                                    color: "#e3e3e3",
+                                    '&:hover': {
+                                        backgroundColor: "#525252",
+                                        borderColor :'#FFC123',
+                                        color: "white",
+                                        transition: 'transform 0.2s',
+                                        transform: 'scale(1.1)'
+                                    }
+                                }}  >Sign Out</Button>
                         </Stack>
                     </Stack>
                 </Box>

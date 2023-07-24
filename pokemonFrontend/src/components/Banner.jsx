@@ -1,7 +1,10 @@
 import SearchBar from "./Search";
 import { Box, Stack, Divider, Button, Typography } from "@mui/material";
-import image from '../assets/pl.png'
+import image from '../assets/pika.png'
 import { useNavigate } from "react-router-dom";
+import { Authenticator } from "@aws-amplify/ui-react";
+import { Auth } from 'aws-amplify';
+
 
 const BannerBox = () => {
     const navigate = useNavigate();
@@ -12,51 +15,37 @@ const BannerBox = () => {
     return (
         <>
             <Box
-                height={270}
+                height={450}
                 display='flex'
                 alignItems='center'
                 justifyContent='center'
                 bgcolor='teal'
                 sx={{
-                    background: 'linear-gradient(to right, #1F1F1F, #1F1F1F)'
+                    backgroundColor: '#1F1F1F'
                 }}
             >
                 <Stack
                     width={'100%'}
                     direction={'row'}
-                    divider={<Divider orientation="vertical" color='white' flexItem />}
                     gap={10}
                     padding={17}
                     display='flex'
                     alignItems='center'
                     justifyContent='center'
                 >
-
-                    <Stack width={'65%'}>
-                        <Box>
-                            <img src={image} width={200} alt="logo" />
-                            <SearchBar />
-                        </Box>
+                    <Stack width={'50%'} paddingLeft={4} >
+                        <Typography variant="h4" paddingBottom={2}>
+                            One stop website to get all your poke Info
+                        </Typography>
+                        <SearchBar />
                     </Stack>
-                    <Stack width={'35%'}>
-                        <Box>
-                            <Stack>
-                                <Stack>
-                                    <Typography variant="h6" component='div' color={'white'} paddingTop={1} >
-                                        Wanna Add a Pokemon?
-                                    </Typography>
-                                </Stack>
-                                <Stack>
-                                    <Button variant="contained" sx={{
-                                        backgroundColor: "#e8d500",
-                                        color: "black",
-                                        width: "150px"
-                                    }}
-                                        onClick={addPoke}
-                                    >Add Pokemon</Button>
-                                </Stack>
-                            </Stack>
-                        </Box>
+                    <Stack width={'50%'}
+                        display='flex'
+                        alignItems='center'
+                        justifyContent='center'
+                        paddingLeft={15}
+                    >
+                        <img src={image} alt="" width={'350px'} />
                     </Stack>
                 </Stack>
             </Box>

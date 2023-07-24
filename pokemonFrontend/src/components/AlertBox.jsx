@@ -24,6 +24,13 @@ const AlertBox = (props) => {
                     {message.message}
                 </Alert>
             }
+
+            {message.type == 'user' &&
+                <Alert sx={{ borderRadius: '15px', bgcolor: '#ff7369', color: 'black' }} severity="error">
+                    <AlertTitle color="#b02117">Error</AlertTitle>
+                    {message.message}
+                </Alert>
+            }
         </>
     );
 }

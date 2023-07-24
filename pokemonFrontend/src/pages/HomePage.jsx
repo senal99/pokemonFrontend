@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import BannerBox from "../components/Banner";
 import Message from "../components/MessageBox";
 import { Box, Button, Stack, Typography } from "@mui/material";
+import useGetToken from "../hooks/useGetToken";
+import TopBar from "../components/TopBar";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const HomePage = () => {
     const [url, setUrl] = useState('http://localhost:3000/pokemon/getAll/0')
@@ -20,6 +23,7 @@ const HomePage = () => {
         }
     }
 
+
     useEffect(() => {
         if (searchKey == 'all') {
             setUrl(`http://localhost:3000/pokemon/getAll/` + page)
@@ -28,12 +32,14 @@ const HomePage = () => {
         }
     }, [page, searchKey])
 
-
     return (
         <div className="homepage">
+            <TopBar />
             <BannerBox />
             <Box>
                 <Message error={error} loading={isLoading} />
+                <Box display='flex' justifyContent='center'> {!pokemonArray && <CircularProgress />}</Box>
+               
                 {pokemonArray &&
                     <>
                         <Box
@@ -79,8 +85,8 @@ const HomePage = () => {
                 >
                     {pokemonArray &&
                         <Stack direction={"row"} gap={10}>
-                            {page > 0 && <Button variant="contained" onClick={backPage}>Previous Page</Button>}
-                            {1 < pokemonArray.length && <Button variant="contained" onClick={frontPage}>Next Page</Button>}
+                            {page > 0 && <Button variant="contained" sx={{bgcolor:'#FDCE44', color: 'black'}} onClick={backPage}>Previous Page</Button>}
+                            {1 < pokemonArray.length && <Button variant="contained" sx={{bgcolor:'#FDCE44', color: 'black'}} onClick={frontPage}>Next Page</Button>}
                         </Stack>
                     }
 

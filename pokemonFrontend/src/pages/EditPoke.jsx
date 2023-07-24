@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import "@fontsource/quicksand";
 import MessageModal from "../modals/MessageModal";
 import axios from "axios";
+import useGetToken from "../hooks/useGetToken";
 
 const EditPoke = () => {
     const { detailPokemon } = useSelector((state) => state.pokemon)
@@ -19,6 +20,7 @@ const EditPoke = () => {
     const [data, setData] = useState(null);
     const [message, setMessage] = useState(false);
     const [pop, setPop] = useState(false);
+    const token = useGetToken();
 
     const handleClick = () => {
         setMessage(false)
@@ -49,6 +51,10 @@ const EditPoke = () => {
             attack: attack,
             health: health,
             defense: defense
+        },{
+            headers: {
+                "Authorization" : `Bearer ${token.token} `
+            }
         })
             .then(function (res) {
                 if (res.status == '200') {
@@ -94,31 +100,32 @@ const EditPoke = () => {
                     paddingTop: '50px',
                     paddingBottom: '50px'
                 }}
-
                 display='flex'
                 justifyContent='center'
                 fontFamily='Quicksand'
             >
                 <Stack direction="row">
                     <Box
-                        bgcolor={'white'}
+                        bgcolor={'#3D3D3D'}
                         padding={4}
                         borderRadius={8}
                     >
                         <Typography variant="h5" paddingBottom={2}>
                             Edit pokemon details
                         </Typography>
-                        <Stack gap={4} width={360} paddingBottom={'10px'}>
+                        <Stack gap={4} width={360} paddingBottom={'10px'} >
                             <TextField
                                 label="Name"
-                                variant="outlined"
-
+                                variant="filled"
+                                sx={{bgcolor:"white"}}
                                 value={name}
                                 onChange={e => { setName(event.target.value) }}
                             />
                             <TextField
                                 label="Description"
                                 multiline
+                                variant="filled"
+                                sx={{bgcolor:"white"}}
                                 rows={4}
                                 onChange={e => { setDescription(event.target.value) }}
                                 value={description}
@@ -129,6 +136,8 @@ const EditPoke = () => {
                                 InputLabelProps={{ shrink: true, }}
                                 onChange={e => { setHealth(event.target.value) }}
                                 value={health}
+                                variant="filled"
+                                sx={{bgcolor:"white"}}
                             />
                             <TextField
                                 label="Attach"
@@ -136,6 +145,8 @@ const EditPoke = () => {
                                 InputLabelProps={{ shrink: true, }}
                                 onChange={e => { setAttack(event.target.value) }}
                                 value={attack}
+                                variant="filled"
+                                sx={{bgcolor:"white"}}
                             />
                             <TextField
                                 label="Defense"
@@ -143,6 +154,8 @@ const EditPoke = () => {
                                 InputLabelProps={{ shrink: true, }}
                                 onChange={e => { setDefense(event.target.value) }}
                                 value={defense}
+                                variant="filled"
+                                sx={{bgcolor:"white"}}
                             />
                         </Stack >
                         {message &&
