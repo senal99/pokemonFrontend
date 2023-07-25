@@ -22,7 +22,7 @@ const style = {
     p: 4,
 };
 
-export default function DeleteModal({turnOff}) {
+export default function DeleteModal({ turnOff }) {
     const { detailPokemon } = useSelector((state) => state.pokemon)
     const navigate = useNavigate();
     const handleClose = () => turnOff(false);
@@ -35,9 +35,9 @@ export default function DeleteModal({turnOff}) {
     }
 
     const deleteTheData = async () => {
-        const res = await axios.delete(`http://localhost:3000/pokemon/${detailPokemon._id}`,{
+        const res = await axios.delete(`http://localhost:3000/pokemon/${detailPokemon._id}`, {
             headers: {
-                "Authorization" :  `Bearer ${token.token}`
+                "Authorization": `Bearer ${token.token}`
             }
         })
             .then(function (res) {

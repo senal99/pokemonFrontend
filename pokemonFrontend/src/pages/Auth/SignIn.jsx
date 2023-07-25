@@ -1,26 +1,22 @@
 import { Auth } from 'aws-amplify';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Amplify } from 'aws-amplify';
 import awsExports from '../../aws/aws.exports';
 import { useNavigate } from 'react-router-dom';
-import { Box, Stack, Divider, CssBaseline, Grid, TextField, Button, Typography } from "@mui/material";
-import useGetToken from '../../hooks/useGetToken';
+import { Box, Stack, Grid, TextField, Button, Typography } from "@mui/material";
 import AlertBox from '../../components/AlertBox';
 import Image from '../../assets/loginBack.jpg'
-import LogoBlack from '../../assets/LogoBlack.png'
 import CircularProgress from '@mui/material/CircularProgress';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [otp, setOTP] = useState('');
   const [update, setUpdate] = useState(true)
   const [errors, setError] = useState('')
   const message = { message: errors, type: 'user' }
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate()
-
 
   Amplify.configure({
     Auth: {
@@ -67,21 +63,18 @@ const SignIn = () => {
   return (
     <>
       <Grid container direction={'row'} sx={{ height: '100vh' }}>
-      {/* <CssBaseline /> */}
+        {/* <CssBaseline /> */}
         <Grid item
           bgcolor={'#FDCE44'}
           display='flex'
           alignItems='center'
           justifyContent='center'
-          direction={'column'}
           xs={false}
           sm={4}
           md={6}
           sx={{
             backgroundImage: `url(${Image})`,
             backgroundRepeat: 'no-repeat',
-            // backgroundColor: (t) =>
-            //   t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -94,7 +87,6 @@ const SignIn = () => {
           justifyContent='center'
           padding={4}
           paddingTop={12}
-          direction={'column'}
         >
           <Box
             width={'350px'}
@@ -147,7 +139,6 @@ const SignIn = () => {
                 display='flex'
                 justifyContent='left'
               >
-
                 <Button
                   onClick={signIn}
                   sx={{
@@ -196,7 +187,6 @@ const SignIn = () => {
     </>
   );
 }
-
 export default SignIn;
 
 

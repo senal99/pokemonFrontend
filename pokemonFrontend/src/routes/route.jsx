@@ -4,7 +4,7 @@ import DetailsPage from '../pages/DetailsPage';
 import PageNotFound from '../pages/PageNotFound';
 import AddPoke from '../pages/AddPoke';
 import EditPoke from '../pages/EditPoke';
-import Login from '../pages/Login';
+
 import SignInUser from '../pages/Auth/SignIn';
 import SignUpUser from '../pages/Auth/SignUp'
 import '@aws-amplify/ui-react/styles.css'

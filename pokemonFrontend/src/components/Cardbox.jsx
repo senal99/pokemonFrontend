@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setDetailPokemon } from '../redux/pokemon';
 import image from '../assets/pika.png'
-import { Flex } from "@aws-amplify/ui-react";
-import { BorderColor } from "@mui/icons-material";
 
 const Cardbox = () => {
     const dispatch = useDispatch();
@@ -13,7 +11,6 @@ const Cardbox = () => {
         dispatch(setDetailPokemon(data))
         navigate(`/details`)
     }
-
     const { pokemonArray } = useSelector((state) => state.pokemon)
 
     return (
@@ -28,14 +25,13 @@ const Cardbox = () => {
                 <Grid container spacing={4} justifyContent="center" width={'800px'}>
                     {pokemonArray.map((dataOne, index) => (
                         <Grid
+                            key={index}
                             item xs={12}
                             sm={12}
                             md={6}
                             display={'flex'}
                             justifyContent={'center'}>
                             <Box
-                                key={index}
-
                                 sx={{
                                     backgroundColor: '#343434',
                                     padding: '10px',

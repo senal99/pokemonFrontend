@@ -1,17 +1,8 @@
 import SearchBar from "./Search";
-import { Box, Stack, Divider, Button, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import image from '../assets/pika.png'
-import { useNavigate } from "react-router-dom";
-import { Authenticator } from "@aws-amplify/ui-react";
-import { Auth } from 'aws-amplify';
-
 
 const BannerBox = () => {
-    const navigate = useNavigate();
-    const addPoke = () => {
-        navigate('/add')
-    }
-
     return (
         <>
             <Box
@@ -45,7 +36,7 @@ const BannerBox = () => {
                         justifyContent='center'
                         paddingLeft={15}
                     >
-                        <img src={image} alt="" width={'350px'} />
+                        <img src={image} alt="Banner Image" width={'350px'} />
                     </Stack>
                 </Stack>
             </Box>

@@ -47,35 +47,38 @@ const TopBar = () => {
                                         transition: 'transform 0.2s',
                                         transform: 'scale(1.1)'
                                     }
-                                }} > Go Home</Button>
+                                }} > Go Home
+                            </Button>
                             <Button
-                            variant="outlined"
+                                variant="outlined"
                                 onClick={addPoke}
                                 sx={{
-                                    borderColor :'#FFC123',
+                                    borderColor: '#FFC123',
                                     color: "#e3e3e3",
                                     '&:hover': {
                                         backgroundColor: "#525252",
-                                        borderColor :'#FFC123',
+                                        borderColor: '#FFC123',
                                         color: "white",
                                         transition: 'transform 0.2s',
                                         transform: 'scale(1.1)'
                                     }
-                                }}  >Add Poke</Button>
-                                <Button
-                    
+                                }}  >Add Poke
+                            </Button>
+                            <Button
+
                                 onClick={signOut}
                                 sx={{
-                                    borderColor :'#FFC123',
+                                    borderColor: '#FFC123',
                                     color: "#e3e3e3",
                                     '&:hover': {
                                         backgroundColor: "#525252",
-                                        borderColor :'#FFC123',
+                                        borderColor: '#FFC123',
                                         color: "white",
                                         transition: 'transform 0.2s',
                                         transform: 'scale(1.1)'
                                     }
-                                }}  >Sign Out</Button>
+                                }}  >Sign Out
+                            </Button>
                         </Stack>
                     </Stack>
                 </Box>

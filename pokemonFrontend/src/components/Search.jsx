@@ -1,9 +1,7 @@
 import { TextField, Stack, Button } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { setSearchKey } from '../redux/pokemon';
-
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -11,11 +9,11 @@ const SearchBar = () => {
 
     const customStyles = {
         height: 40,
-        width : 400,
+        width: 400,
         outline: 'none',
-        borderStyle : 'none',
-        borderRadius : '15px',
-        backgroundColor : '#4D4D4D',
+        borderStyle: 'none',
+        borderRadius: '15px',
+        backgroundColor: '#4D4D4D',
         '& input':
         {
             padding: '5px 12px',
@@ -24,7 +22,6 @@ const SearchBar = () => {
     };
 
     const pattern = /^[A-Za-z]+$/;
-
     const handleSearch = () => {
         // check if input does not have numbers or other special characters
         if (pattern.test(search) || search == null || search == "") {
@@ -42,12 +39,14 @@ const SearchBar = () => {
         <div className="search">
             <Stack spacing={2}  >
                 <TextField onChange={(e) => { setSearch(e.target.value) }} style={customStyles} variant="outlined" size="small" />
-                <Button variant="contained"  onClick={handleSearch} sx={{
-                    backgroundColor: "#FFC123",
-                    color: "black",
-                    width: "100px",
-                    borderRadius : '10px'
-                }}>Search</Button>
+                <Button variant="contained" onClick={handleSearch}
+                    sx={{
+                        backgroundColor: "#FFC123",
+                        color: "black",
+                        width: "100px",
+                        borderRadius: '10px'
+                    }}>Search
+                </Button>
             </Stack>
         </div>
     );
