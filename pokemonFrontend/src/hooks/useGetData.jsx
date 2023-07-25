@@ -9,11 +9,11 @@ const useGetData = (url) => {
     const [token, setToken] = useState('')
     const dispatch = useDispatch();
     const { searchKey, isLoading, pokemonArray, error } = useSelector((state) => state.pokemon)
-    
+
     const allData = async () => {
         const res = await axios.get(url, {
             headers: {
-                "Authorization" : `Bearer ${token} `
+                "Authorization": `Bearer ${token} `
             }
         })
             .catch(function (error) {
@@ -40,13 +40,13 @@ const useGetData = (url) => {
     }
 
     useEffect(() => {
-        if(token)
+        if (token)
             allData();
     }, [url, token])
 
-    useEffect(()=>{
+    useEffect(() => {
         setToken(tokens.token)
-    },[tokens])
+    }, [tokens])
 
 
     return { isLoading, error, searchKey, pokemonArray }

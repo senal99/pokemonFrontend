@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import Cardbox from "../components/Cardbox";
 import useGetData from "../hooks/useGetData";
-import { useSelector } from "react-redux";
 import BannerBox from "../components/Banner";
 import Message from "../components/MessageBox";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import useGetToken from "../hooks/useGetToken";
 import TopBar from "../components/TopBar";
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -22,7 +20,6 @@ const HomePage = () => {
             setPage(page - 1)
         }
     }
-
 
     useEffect(() => {
         if (searchKey == 'all') {
@@ -89,7 +86,6 @@ const HomePage = () => {
                             {1 < pokemonArray.length && <Button variant="contained" sx={{bgcolor:'#FDCE44', color: 'black'}} onClick={frontPage}>Next Page</Button>}
                         </Stack>
                     }
-
                 </Box>
             </Box>
         </div>

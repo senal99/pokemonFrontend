@@ -20,10 +20,10 @@ const style = {
 export default function MessageModal({ message }) {
     const navigate = useNavigate();
     const handleClose = () => setOpen(false);
-    const buttonClick =() =>{
+    const buttonClick = () => {
         navigate('/')
     }
-    
+
     return (
         <div>
             <Modal

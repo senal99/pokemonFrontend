@@ -1,13 +1,11 @@
 import { Auth } from 'aws-amplify';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Amplify } from 'aws-amplify';
 import awsExports from '../../aws/aws.exports';
 import { useNavigate } from 'react-router-dom';
-import { Box, Stack, Divider, Grid, Button, TextField, Typography } from "@mui/material";
-import image from '../../assets/pl.png'
+import { Box, Stack, Grid, Button, TextField, Typography } from "@mui/material";
 import Image from '../../assets/loginBack.jpg'
 import CircularProgress from '@mui/material/CircularProgress';
-
 import AlertBox from '../../components/AlertBox';
 
 const SignUp = () => {
@@ -19,7 +17,6 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [switcher, setSwitch] = useState(true)
   const message = { message: errors, type: 'user' }
-
   const navigate = useNavigate()
 
   Amplify.configure({
@@ -30,12 +27,11 @@ const SignUp = () => {
     }
   })
 
-
-  const signUpUser = (e) =>{
+  const signUpUser = (e) => {
     setError(null)
-    if(password == conPassword){
+    if (password == conPassword) {
       signUpUserP(e)
-    }else{
+    } else {
       setError("Password does not match!")
     }
   }
@@ -55,7 +51,7 @@ const SignUp = () => {
       }
       console.log(user)
       console.log('Sign up successful:', user);
-     
+
     } catch (error) {
       console.log('Error signing up:', error);
       setError(error.message)
@@ -93,7 +89,6 @@ const SignUp = () => {
           display='flex'
           alignItems='center'
           justifyContent='center'
-          // direction={'column'}
           xs={false}
           sm={4}
           md={6}
@@ -104,7 +99,7 @@ const SignUp = () => {
             backgroundPosition: 'center',
           }}
         />
-        <Grid 
+        <Grid
           item
           xs={12} sm={8} md={6}
           bgcolor={'#1B191A'}
