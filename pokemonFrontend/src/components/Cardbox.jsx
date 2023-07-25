@@ -37,7 +37,6 @@ const Cardbox = () => {
                                     padding: '10px',
                                     textAlign: 'left',
                                     marginTop: '25px',
-                                    transition: 'background-color 0.2s',
                                     transition: 'transform 0.3s',
                                     borderRadius: '20px',
                                     '&:hover': {

@@ -11,5 +11,9 @@ export default defineConfig({
         replacement: './runtimeConfig.browser', // ensures browser compatible version of AWS JS SDK is used
       },
     ]
+  },
+  server: {
+    host: true,
+    port: 8000,
   }
 })

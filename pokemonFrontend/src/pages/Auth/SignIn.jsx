@@ -172,15 +172,6 @@ const SignIn = () => {
               </Box>
             </Stack>
           </Box>
-          <Typography
-            variant="h5"
-            paddingTop={6}
-            onClick={() => { navigate('/signup') }}
-            fontSize={15}
-            component='div'
-          >
-            Forgot password?
-          </Typography>
         </Grid>
 
       </Grid>
